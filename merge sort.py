@@ -30,8 +30,8 @@ def merge(a, p, q, r):
             j = j + 1
 
 
-ls = [5, 4, 3, 2, 1, 0, -1, -2, -3, -4]
+ls = [5, 4, 3, 2, 1, 0, -1, -2, -3, -4, -5]
 # merge(ls, 1, 1, 2)
 print(ls)
-merge_sort(ls, 0, 9)
+merge_sort(ls, 0, len(ls) - 1)
 print(ls)
