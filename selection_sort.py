@@ -9,7 +9,7 @@ def selection_sort(ls):
         ls[min] = temp
 
 
-A = [5, 4, 3, 2, 1]
+A = [5, 4, 3, 2, 1, 0, -1]
 selection_sort(A)
 for a in A:
     print(a)
