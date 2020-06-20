@@ -13,4 +13,5 @@ def binary_search(ls, target):
 
 
 a = [1, 2, 3, 4, 6, 7, 32, 43]
-print(binary_search(a, 43))
+print(binary_search(a, 5))
+print(binary_search(a, 4))
