@@ -18,7 +18,7 @@ def find_max_subarray(a, low, high):
 
 
 def find_max_crossing_subarray(a, low, mid, high):
-    left_sum, right_sum = - 100, -100
+    left_sum, right_sum = - math.inf, - math.inf
     sum = 0
     max_left, max_right = 0, 0
     for i in range(mid, low - 1, -1):
