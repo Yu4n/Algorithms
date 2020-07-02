@@ -35,5 +35,21 @@ def find_max_crossing_subarray(a, low, mid, high):
     return (max_left, max_right, left_sum + right_sum)
 
 
+def maxSubArray(nums):
+    """Shortest running time."""
+    m = nums[0]
+    tempm = nums[0]
+    for i in nums[1:]:
+        if i > tempm and tempm < 0:
+            tempm = i
+        else:
+            tempm += i
+
+        if tempm > m:
+            m = tempm
+
+    return m
+
+
 ls = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
 print(find_max_subarray(ls, 0, len(ls) - 1))
