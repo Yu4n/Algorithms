@@ -51,5 +51,15 @@ def maxSubArray(nums):
     return m
 
 
+def maxSubArray2(nums):
+    """Smallest memory needed."""
+    localSum = -math.inf
+    globalSum = -math.inf
+    for n in nums:
+        localSum = max(localSum + n, n)
+        globalSum = max(globalSum, localSum)
+    return globalSum
+
+
 ls = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
 print(find_max_subarray(ls, 0, len(ls) - 1))
