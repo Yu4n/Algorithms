@@ -35,8 +35,8 @@ def find_max_crossing_subarray(a, low, mid, high):
     return (max_left, max_right, left_sum + right_sum)
 
 
-def maxSubArray(nums):
-    """Shortest running time."""
+def maxSubArray_smallest_time(nums):
+    """smallest running time"""
     m = nums[0]
     tempm = nums[0]
     for i in nums[1:]:
@@ -51,7 +51,7 @@ def maxSubArray(nums):
     return m
 
 
-def maxSubArray2(nums):
+def maxSubArray_minimal_memo(nums):
     """Smallest memory needed."""
     max_so_far = nums[0]
     max_ending_here = nums[0]
@@ -62,5 +62,19 @@ def maxSubArray2(nums):
     return max_so_far
 
 
-ls = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
+def maxSubArray_brutal_force(nums):
+    max = - math.inf
+    for i in range(len(nums)):
+        sum = 0
+        for j in range(i, len(nums)):
+            sum += nums[j]
+            if sum > max:
+                max = sum
+                left = i
+                high = j
+    return left, high, max
+
+
+ls = [-1, 11, 11, 4, -1, -2, -1, -5, -4]
 print(find_max_subarray(ls, 0, len(ls) - 1))
+print(maxSubArray_brutal_force(ls))
