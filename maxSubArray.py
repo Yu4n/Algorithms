@@ -63,16 +63,16 @@ def maxSubArray_minimal_memo(nums):
 
 
 def maxSubArray_brutal_force(nums):
-    max = - math.inf
+    m = - math.inf
     for i in range(len(nums)):
-        sum = 0
+        tempm = 0
         for j in range(i, len(nums)):
-            sum += nums[j]
-            if sum > max:
-                max = sum
+            tempm += nums[j]
+            if tempm > m:
+                m = tempm
                 left = i
                 high = j
-    return left, high, max
+    return left, high, m
 
 
 ls = [-1, 11, 11, 4, -1, -2, -1, -5, -4]
