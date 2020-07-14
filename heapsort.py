@@ -1,44 +1,4 @@
-# Python program for implementation of heap Sort
-
-# To heapify subtree rooted at index i. 
-# n is size of heap 
-def heapify(arr, n, i):
-    largest = i  # Initialize largest as root 
-    l = 2 * i + 1  # left = 2*i + 1
-    r = 2 * i + 2  # right = 2*i + 2
-
-    # See if left child of root exists and is 
-    # greater than root 
-    if l < n and arr[i] < arr[l]:
-        largest = l
-
-        # See if right child of root exists and is
-    # greater than root 
-    if r < n and arr[largest] < arr[r]:
-        largest = r
-
-        # Change root, if needed
-    if largest != i:
-        arr[i], arr[largest] = arr[largest], arr[i]  # swap
-
-        # Heapify the root. 
-        heapify(arr, n, largest)
-
-    # The main function to sort an array of given size
-
-
-def heapSort(arr):
-    n = len(arr)
-
-    # Build a maxheap. 
-    # Since last parent will be at ((n//2)-1) we can start at that location. 
-    for i in range(n // 2 - 1, -1, -1):
-        heapify(arr, n, i)
-
-        # One by one extract elements
-    for i in range(n - 1, 0, -1):
-        arr[i], arr[0] = arr[0], arr[i]  # swap
-        heapify(arr, i, 0)
+import math
 
 
 def max_heapify(a, n, i):
@@ -70,7 +30,42 @@ def heapsort(a):
         max_heapify(a, i, 0)
 
 
+def heap_maximum(a,):
+    return a[0]
+
+
+def heap_extract_max(a, heapsize=None):
+    if heapsize is None:
+        heapsize = len(a)
+    if heapsize < 1:
+        return -1
+    max_value = a[0]
+    a[0] = a[heapsize - 1]
+    del(a[heapsize - 1])
+    heapsize -= 1
+    max_heapify(a, heapsize, 0)
+    return max_value
+
+
+def heap_increase_key(a, i, key):
+    if key < a[i]:
+        return -1
+    a[i] = key
+    while i > 0 and a[(i - 1) // 2] < a[i]:
+        a[i], a[(i - 1) // 2] = a[(i - 1) // 2], a[i]
+        i = (i - 1) // 2
+
+
+def max_heap_insert(a, key):
+    a.append(- math.inf)
+    heap_increase_key(a, len(a) - 1, key)
+
+
 if __name__ == '__main__':
     arr = [12, 11, 13, 20, 20, 50, 7, 4, 3, 2, 1, -1]
-    heapsort(arr)
+    build_max_heap(arr)
+    print(arr)
+    heap_increase_key(arr, len(arr) - 1, 100)
+    print(arr)
+    max_heap_insert(arr, 101)
     print(arr)
