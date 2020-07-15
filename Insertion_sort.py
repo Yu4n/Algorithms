@@ -1,3 +1,4 @@
+# Loop invariant is that the subarray A[0 to i-1] is always sorted.
 def insertionSort(arr):
     # Traverse through 1 to len(arr)
     for i in range(1, len(arr)):

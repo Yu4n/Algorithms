@@ -1,3 +1,6 @@
+# Loop invariants are:
+#   1. In the outer loop, array is sorted for first i elements.
+#   2. In the inner loop, min is always the minimum value in A[i to j].
 def selection_sort(ls):
     for j in range(len(ls)-1):
         min = j

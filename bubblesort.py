@@ -1,3 +1,9 @@
+# In bubble sort algorithm, after each iteration of the loop
+# largest element of the array is always placed at right most position.
+# Therefore, the loop invariant condition is that at the end of i iteration
+# right most i elements are sorted and in place.
+
+
 def bubbleSort(ls):
     for i in range(len(ls) - 1):
         for j in range(len(ls) - 1, i, -1):

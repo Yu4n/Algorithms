@@ -1,3 +1,4 @@
+
 import math
 
 
@@ -10,6 +11,11 @@ def merge_sort(a, p, r):
 
 
 def merge(a, p, q, r):
+    # Loop invariant is:
+    #   The subarray a[p..k-1] contains k - p smallest elements of
+    #       L[1..n1+1] and R[1..n2+1], in sorted order.
+    #   Moreover, L[i] and R[j] are the smallest elements
+    #       of their arrays that have not been copied into A.
     n1 = q - p + 1  # Length of subarray a[p, q]
     n2 = r - q  # Length of subarray a[q + 1, r]
     left = []
