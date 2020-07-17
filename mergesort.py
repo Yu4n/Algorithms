@@ -1,12 +1,11 @@
-
 import math
 
 
-def merge_sort(a, p, r):
+def mergesort(a, p, r):
     if p < r:
         q = math.floor((p + r) / 2)
-        merge_sort(a, p, q)
-        merge_sort(a, q + 1, r)
+        mergesort(a, p, q)
+        mergesort(a, q + 1, r)
         merge(a, p, q, r)
 
 
@@ -41,5 +40,5 @@ def merge(a, p, q, r):
 ls = [5, 4, 3, 2, 1, 0, -1, -2, -3, -4, -5]
 # merge(ls, 1, 1, 2)
 print(ls)
-merge_sort(ls, 0, len(ls) - 1)
+mergesort(ls, 0, len(ls) - 1)
 print(ls)
