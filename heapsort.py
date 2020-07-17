@@ -10,7 +10,7 @@ def max_heapify(a, n, i):
     else:
         largest = i
     # if a[largest] < a[right] and right < heapSize:
-    # Be careful of the conditional statement above which causes list out of range!
+    # Be careful of the conditional statement above, which causes list out of range!
     if right < heapSize and a[largest] < a[right]:
         largest = right
     if largest != i:
