@@ -12,7 +12,7 @@ def partition(a, p, r):
     #   1. If p <= k <= i, then a[k] <= pivot.
     #   2. If i + 1 <= k <= j - 1, then a[k] > pivot.
     #   3. If k = r, then a[k] = pivot.
-    for j in range(p, r):
+    for j in range(p, r):  # j is from p to r - 1(inclusive).
         if a[j] <= pivot:
             i += 1
             a[i], a[j] = a[j], a[i]
@@ -20,6 +20,6 @@ def partition(a, p, r):
     return i + 1
 
 
-A = [5, 4, 3, 2, 1, 0, -1]
+A = [2, 8, 7, 1, 3, 5, 6, 4]
 quicksort(A, 0, len(A) - 1)
 print(A)
