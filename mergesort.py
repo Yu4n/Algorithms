@@ -21,10 +21,6 @@ def merge(a, p, q, r):
     right = []
     left[:] = a[p: p + n1]  # copy the subarray A[p, q] into L[1, n1]
     right[:] = a[q + 1: q + 1 + n2]   # copy the subarray A[q + 1, r] into R[1, n1]
-    '''for i in range(n1):
-        left.append(a[p + i])  
-    for j in range(n2):
-        right.append(a[q + j + 1]) '''
     left.append(math.inf)
     right.append(math.inf)
     i, j = 0, 0
