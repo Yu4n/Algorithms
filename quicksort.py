@@ -1,3 +1,6 @@
+from random import randint
+
+
 def quicksort(a, p, r):
     if p < r:
         q = partition(a, p, r)
@@ -20,6 +23,19 @@ def partition(a, p, r):
     return i + 1
 
 
+def randomized_partition(a, p, r):
+    i = randint(p, r)
+    a[r], a[i] = a[i], a[r]
+    return partition(a, p, r)
+
+
+def randomized_quicksort(a, p, r):
+    if p < r:
+        q = randomized_partition(a, p, r)
+        randomized_quicksort(a, p, q - 1)
+        randomized_quicksort(a, q + 1, r)
+
+
 A = [2, 8, 7, 1, 3, 5, 6, 4]
-quicksort(A, 0, len(A) - 1)
+randomized_quicksort(A, 0, len(A) - 1)
 print(A)
