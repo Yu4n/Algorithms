@@ -3,7 +3,8 @@ from random import randint
 
 def quicksort(a, p, r):
     if p < r:
-        q = partition(a, p, r)
+        # q = partition(a, p, r)
+        q = hoare_partition(a, p, r)
         quicksort(a, p, q - 1)
         quicksort(a, q + 1, r)
 
@@ -36,6 +37,25 @@ def randomized_quicksort(a, p, r):
         randomized_quicksort(a, q + 1, r)
 
 
+def hoare_partition(a, p, r):
+    x = a[p]
+    i = p - 1
+    j = r + 1
+    while True:
+        while True:
+            j -= 1
+            if a[j] <= x:
+                break
+        while True:
+            i += 1
+            if a[i] >= x:
+                break
+        if i < j:
+            a[i], a[j] = a[j], a[i]
+        else:
+            return j
+
+
 A = [2, 8, 7, 1, 3, 5, 6, 4]
-randomized_quicksort(A, 0, len(A) - 1)
+quicksort(A, 0, len(A) - 1)
 print(A)
