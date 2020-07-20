@@ -1,6 +1,6 @@
 def counting_sort(a):
     k = max(a) - min(a) + 1
-    b, c = [], []
+    b, c = [], []  # c is the counting array, and b is the sorted array.
     for i in range(k):
         c.append(0)
     for i in range(len(a)):
