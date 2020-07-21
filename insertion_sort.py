@@ -32,16 +32,17 @@ def insertionSortRecursive(arr, n):
     # Move elements of arr[0..i-1], that are
     # greater than key, to one position ahead
     # of their current position
-    while (j >= 0 and arr[j] > key):
+    while j >= 0 and arr[j] > key:
         arr[j + 1] = arr[j]
         j = j - 1
 
     arr[j + 1] = key
 
 
-arr = [12, 11, 13, 5, 6]
-insertionSort(arr)
-print(arr)
-arr2 = [6, 5, 4, 3, 2, 1, 0, -1]
-insertionSortRecursive(arr2, len(arr2))
-print(arr2)
+if __name__ == '__main__':
+    arr = [12, 11, 13, 5, 6]
+    insertionSort(arr)
+    print(arr)
+    arr2 = [6, 5, 4, 3, 2, 1, 0, -1]
+    insertionSortRecursive(arr2, len(arr2))
+    print(arr2)
