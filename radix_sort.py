@@ -12,7 +12,7 @@ def countingSort(array, place):
         index = array[i] // place
         count[index % 10] += 1
 
-    # Calculate cummulative count
+    # Calculate cumulative count
     for i in range(1, 10):
         count[i] += count[i - 1]
 
