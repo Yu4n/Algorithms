@@ -1,4 +1,4 @@
-class Node:
+class ListNode:
     def __init__(self, data):
         self.val = data
         self.next = None
@@ -10,7 +10,7 @@ class LinkedList:
 
 
 def list_search(ls, key):
-    x = ls.head
+    x = ls
     while x is not None and key != x.val:
         x = x.next
     try:
@@ -21,8 +21,8 @@ def list_search(ls, key):
 
 
 def list_insert(ls, pos, key):  # Index starts at 1.
-    new = Node(key)
-    x = ls.head
+    new = ListNode(key)
+    x = ls
     for i in range(pos - 1):
         x = x.next
     new.next = x.next
@@ -30,7 +30,7 @@ def list_insert(ls, pos, key):  # Index starts at 1.
 
 
 def list_delete(ls, pos):
-    x = ls.head
+    x = ls
     for i in range(pos - 1):
         x = x.next
     temp = x
@@ -38,34 +38,33 @@ def list_delete(ls, pos):
 
 
 def list_edit(ls, pos, key):
-    x = ls.head
+    x = ls
     for i in range(pos - 1):
         x = x.next
     x.next.val = key
 
 
 if __name__ == '__main__':
-    llist = LinkedList()
-    llist.head = Node(None)
-    first = Node(1)
-    second = Node(2)
-    third = Node(3)
-    llist.head.next = first
+    llist = ListNode(None)
+    first = ListNode(1)
+    second = ListNode(2)
+    third = ListNode(3)
+    llist.next = first
     first.next = second
     second.next = third
     list_insert(llist, 4, 100)
-    n = llist.head
+    n = llist
     while n is not None:
         print(n.val)
         n = n.next
     list_delete(llist, 1)
-    n = llist.head
+    n = llist
     while n is not None:
         print(n.val)
         n = n.next
     list_search(llist, 100)
     list_edit(llist, 3, 200)
-    n = llist.head
+    n = llist
     while n is not None:
         print(n.val)
         n = n.next
