@@ -4,11 +4,6 @@ class ListNode:
         self.next = None
 
 
-class LinkedList:
-    def __init__(self):
-        self.head = None
-
-
 def list_search(ls, key):
     x = ls
     while x is not None and key != x.val:
@@ -17,7 +12,7 @@ def list_search(ls, key):
         if x.val == key:
             print(f"{key} found!")
     except AttributeError:
-        print("Not found!")
+        print(f"{key} Not found!")
 
 
 def list_insert(ls, pos, key):  # Index starts at 1.
