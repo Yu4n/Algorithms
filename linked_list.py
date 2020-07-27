@@ -22,6 +22,7 @@ def list_insert(ls, pos, key):  # Index starts at 1.
         x = x.next
     new.next = x.next
     x.next = new
+    return new
 
 
 def list_delete(ls, pos):
