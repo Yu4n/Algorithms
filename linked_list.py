@@ -39,6 +39,18 @@ def list_edit(ls, pos, key):
     x.next.val = key
 
 
+def list_reverse(head):
+    curr = head
+    prev = None
+    while curr is not None:
+        nex = curr.next
+        curr.next = prev
+        prev = curr
+        curr = nex
+    head = prev
+    return head
+
+
 if __name__ == '__main__':
     llist = ListNode(None)
     first = ListNode(1)
@@ -47,19 +59,8 @@ if __name__ == '__main__':
     llist.next = first
     first.next = second
     second.next = third
-    list_insert(llist, 4, 100)
-    n = llist
-    while n is not None:
-        print(n.val)
-        n = n.next
-    list_delete(llist, 1)
-    n = llist
-    while n is not None:
-        print(n.val)
-        n = n.next
-    list_search(llist, 100)
-    list_edit(llist, 3, 200)
-    n = llist
+    list_reverse(llist)
+    n = third
     while n is not None:
         print(n.val)
         n = n.next
