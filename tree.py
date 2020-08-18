@@ -49,6 +49,36 @@ def inorder_non_recursive(root):
             break
 
 
+def tree_minimum(root):
+    while root.left:
+        root = root.left
+    return root.val
+
+
+def tree_maximum(root):
+    while root.right:
+        root = root.right
+    return root.val
+
+
+def tree_insert(root, key):
+    z = TreeNode(key)
+    y = None
+    x = root
+    while x:
+        y = x
+        if z.val < x.val:
+            x = x.left
+        else:
+            x = x.right
+    if y is None:
+        root = z
+    elif z.val < y.val:
+        y.left = z
+    else:
+        y.right = z
+
+
 if __name__ == '__main__':
     Root = TreeNode(4)
     Root.left = TreeNode(2)
@@ -57,5 +87,5 @@ if __name__ == '__main__':
     Root.left.right = TreeNode(3)
     Root.right.left = TreeNode(5)
     Root.right.right = TreeNode(7)
-    # print_binary_tree_non_recursive(Root)
+    tree_insert(Root, 8)
     inorder_non_recursive(Root)
