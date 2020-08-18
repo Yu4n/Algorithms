@@ -50,12 +50,12 @@ def inorder_non_recursive(root):
 
 
 if __name__ == '__main__':
-    Root = TreeNode(1)
+    Root = TreeNode(4)
     Root.left = TreeNode(2)
-    Root.right = TreeNode(3)
-    Root.left.left = TreeNode(4)
-    Root.left.right = TreeNode(5)
-    Root.right.left = TreeNode(6)
+    Root.right = TreeNode(6)
+    Root.left.left = TreeNode(1)
+    Root.left.right = TreeNode(3)
+    Root.right.left = TreeNode(5)
     Root.right.right = TreeNode(7)
     # print_binary_tree_non_recursive(Root)
     inorder_non_recursive(Root)
