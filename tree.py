@@ -72,8 +72,7 @@ def tree_insert(root, key):
         else:
             x = x.right
     if y is None:
-        root = z
-        return root
+        return z
     elif z.val < y.val:
         y.left = z
     else:
