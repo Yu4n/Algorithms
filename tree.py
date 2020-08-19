@@ -73,6 +73,7 @@ def tree_insert(root, key):
             x = x.right
     if y is None:
         root = z
+        return root
     elif z.val < y.val:
         y.left = z
     else:
@@ -80,12 +81,19 @@ def tree_insert(root, key):
 
 
 if __name__ == '__main__':
-    Root = TreeNode(4)
+    Root = None
+    '''
     Root.left = TreeNode(2)
     Root.right = TreeNode(6)
     Root.left.left = TreeNode(1)
     Root.left.right = TreeNode(3)
     Root.right.left = TreeNode(5)
     Root.right.right = TreeNode(7)
-    tree_insert(Root, 8)
+    '''
+    if Root is None:
+        Root = tree_insert(Root, 8)
+    else:
+        tree_insert(Root, 8)
+    tree_insert(Root, 7)
+    tree_insert(Root, 6)
     inorder_non_recursive(Root)
