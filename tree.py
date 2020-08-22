@@ -79,6 +79,45 @@ def tree_insert(root, key):
         y.right = z
 
 
+def deleteNode(root: TreeNode, key: int) -> TreeNode:
+    if root == None:
+        return root
+    # Find node
+    if key < root.val:  # if less
+        root.left = deleteNode(root.left, key)
+    elif key > root.val:  # if greater
+        root.right = deleteNode(root.right, key)
+
+    else:  # Node to delete
+        # Case 1: No childs.
+        if root.left == None and root.right == None:
+            root = None
+
+        # Case 2: One child
+        elif root.left == None and root.right != None:
+            root = root.right
+        elif root.right == None and root.left != None:
+            root = root.left
+
+        # Case 3: 2 children
+        else:
+            minRoot = findMinNode(root.right)
+            root.val = minRoot.val
+            root.right = deleteNode(root.right, root.val)
+
+    return root
+
+
+def findMinNode(self, root: TreeNode) -> TreeNode:
+    current = root
+
+    # loop down to find the lefmost leaf
+    while (current.left is not None):
+        current = current.left
+
+    return current
+
+
 if __name__ == '__main__':
     Root = None
     '''
@@ -95,4 +134,5 @@ if __name__ == '__main__':
         tree_insert(Root, 8)
     tree_insert(Root, 7)
     tree_insert(Root, 6)
+    Root = deleteNode(Root, 7)
     inorder_non_recursive(Root)
