@@ -108,7 +108,7 @@ def deleteNode(root: TreeNode, key: int) -> TreeNode:
     return root
 
 
-def findMinNode(self, root: TreeNode) -> TreeNode:
+def findMinNode(root: TreeNode) -> TreeNode:
     current = root
 
     # loop down to find the lefmost leaf
