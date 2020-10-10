@@ -2,7 +2,7 @@ from typing import List
 
 
 class Solution:
-    def twoSum(self, nums: List[int], target: int) -> List[int]:
+    '''def twoSum(self, nums: List[int], target: int) -> List[int]:
         n = len(nums)
         sum = 0
         res = []
@@ -12,4 +12,15 @@ class Solution:
                 if sum == target:
                     res.append(i)
                     res.append(j)
-                    return res
+                    return res'''
+
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        d = {}
+        output = []
+        for i, v in enumerate(nums):
+            if target - v not in d:
+                d[v] = i
+            else:
+                output.append(d[target - v])
+                output.append(i)
+                return output
