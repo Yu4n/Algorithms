@@ -13,5 +13,3 @@ class Solution:
                     res.append(i)
                     res.append(j)
                     return res
-
-
