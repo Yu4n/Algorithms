@@ -14,4 +14,3 @@ class Solution:
             return -rev
         else:
             return rev
-
