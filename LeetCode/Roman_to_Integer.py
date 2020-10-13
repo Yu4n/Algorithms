@@ -1,28 +1,27 @@
 class Solution:
     def romanToInt(self, s: str) -> int:
         res = 0
-        newstr = ''
         if 'IV' or 'IX' or 'XL' or 'XC' or 'CD' or 'CM' in s:
             fourNum = s.count('IV')
-            newstr = s.replace("IV", '')
+            s = s.replace("IV", '')
             res += 4 * fourNum
             nineNum = s.count('IX')
-            newstr = newstr.replace('IX', '')
+            s = s.replace('IX', '')
             res += 9 * nineNum
             fortyNum = s.count('XL')
-            newstr = newstr.replace('XL', '')
+            s = s.replace('XL', '')
             res += 40 * fortyNum
             ninetyNum = s.count('XC')
-            newstr = newstr.replace('XC', '')
+            s = s.replace('XC', '')
             res += 90 * ninetyNum
             fhNum = s.count('CD')
-            newstr = newstr.replace('CD', '')
+            s = s.replace('CD', '')
             res += 400 * fhNum
             nhNum = s.count('CM')
-            newstr = newstr.replace('CM', '')
+            s = s.replace('CM', '')
             res += 900 * nhNum
-        res += (newstr.count('I') + newstr.count('V') * 5 + newstr.count('X') * 10 + newstr.count('L') * 50
-                + newstr.count('C') * 100 + newstr.count('D') * 500 + newstr.count('M') * 1000)
+        res += (s.count('I') + s.count('V') * 5 + s.count('X') * 10 + s.count('L') * 50
+                + s.count('C') * 100 + s.count('D') * 500 + s.count('M') * 1000)
         return res
 
     # From https://leetcode.com/problems/roman-to-integer/discuss/264743/Clean-Python-beats-99.78.
