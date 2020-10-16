@@ -8,3 +8,9 @@ class Solution:
             if digits[i] != digits[length - i - 1]:
                 return False
         return True
+
+    def isPalindrome1(self, x: int) -> bool:
+        if x < 0:
+            return False
+
+        return str(x) == str(x)[::-1]  # Reverse string by slicing.
