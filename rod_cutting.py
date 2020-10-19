@@ -55,6 +55,7 @@ def memoized_cut_rod(p, n):
     ray r[0..n] with the value -inf., a convenient choice with which to denote “un-
     known.” (Known revenue values are always nonnegative.) It then calls its helper
     routine, MEMOIZED-CUT-ROD-AUX.
+    
     The procedure MEMOIZED-CUT-ROD-AUX is just the memoized version of our
     previous procedure, CUT-ROD. It first checks in line 1 to see whether the desired
     value is already known and, if it is, then line 2 returns it. Otherwise, lines 3–7
