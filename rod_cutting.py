@@ -65,7 +65,7 @@ def memoized_cut_rod(p, n):
 
 def memoized_cut_rod_aux(p, n, r):
     if r[n] >= 0:
-        return r[n]
+        return r[n]  # Return the optimal solution for n.
     q = p[0]
     if n == 0:
         q = 0
