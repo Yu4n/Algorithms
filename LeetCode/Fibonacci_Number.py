@@ -1,4 +1,7 @@
 class Solution:
+    """ The Fibonacci numbers are defined by recurrence 3.22. Give an O(n)
+        time dynamic-programming algorithm to compute the nth Fibonacci number.
+        Draw the subproblem graph. How many vertices and edges are in the graph? (CLRS p.370)"""
     def fib(self, N: int) -> int:
         f = [0, 1]
         if N <= 1:
