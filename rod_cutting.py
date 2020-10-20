@@ -92,3 +92,40 @@ def bottom_up_cut_rod(p, n):
 prc = [0, 1, 5, 8, 9, 10, 17, 17, 20, 24, 30]  # Price
 for i in range(0, 11):
     print(bottom_up_cut_rod(prc, i))
+
+
+"""When we think about a dynamic-programming problem, we should understand the
+    set of subproblems involved and how subproblems depend on one another.
+    
+    The subproblem graph for the problem embodies exactly this information. Fig-
+    ure 15.4 shows the subproblem graph for the rod-cutting problem with n D 4. It
+    is a directed graph, containing one vertex for each distinct subproblem. The sub-
+    problem graph has a directed edge from the vertex for subproblem x to the vertex
+    for subproblem y if determining an optimal solution for subproblem x involves
+    directly considering an optimal solution for subproblem y. For example, the sub-
+    problem graph contains an edge from x to y if a top-down recursive procedure for
+    solving x directly calls itself to solve y. We can think of the subproblem graph
+    as a “reduced” or “collapsed” version of the recursion tree for the top-down recur-
+    sive method, in which we coalesce all nodes for the same subproblem into a single
+    vertex and direct all edges from parent to child.
+    
+    The bottom-up method for dynamic programming considers the vertices of the
+    subproblem graph in such an order that we solve the subproblems y adjacent to
+    a given subproblem x before we solve subproblem x. (Recall from Section B.4
+    that the adjacency relation is not necessarily symmetric.) Using the terminology
+    from Chapter 22, in a bottom-up dynamic-programming algorithm, we consider the
+    vertices of the subproblem graph in an order that is a “reverse topological sort,” or
+    a “topological sort of the transpose” (see Section 22.4) of the subproblem graph. In
+    other words, no subproblem is considered until all of the subproblems it depends
+    upon have been solved. Similarly, using notions from the same chapter, we can
+    view the top-down method (with memoization) for dynamic programming as a
+    “depth-first search” of the subproblem graph (see Section 22.3).
+    
+    The size of the subproblem graph G D .V; E/ can help us determine the running
+    time of the dynamic programming algorithm. Since we solve each subproblem just
+    once, the running time is the sum of the times needed to solve each subproblem.
+    Typically, the time to compute the solution to a subproblem is proportional to the
+    degree (number of outgoing edges) of the corresponding vertex in the subproblem
+    graph, and the number of subproblems is equal to the number of vertices in the sub-
+    problem graph. In this common case, the running time of dynamic programming
+    is linear in the number of vertices and edges. (CLRS p.368)"""
