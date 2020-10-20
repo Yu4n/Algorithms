@@ -1,7 +1,9 @@
 class Solution:
     def fib(self, N: int) -> int:
-        fibo = {0: 0, 1: 1}
-        for k in range(2, N + 1):
-            res = fibo[k - 1] + fibo[k - 2]
-            fibo[k] = res
-        return fibo[N]
+        f = [0, 1]
+        if N <= 1:
+            return N
+        for i in range(2, N + 1):
+            r = f[i - 2] + f[i - 1]
+            f.append(r)
+        return f[-1]
