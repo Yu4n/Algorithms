@@ -99,8 +99,11 @@ def bottom_up_cut_rod(p, n):
 
 prc = [0, 1, 5, 8, 9, 10, 17, 17, 20, 24, 30]  # Price
 # for i in range(0, 11):
-print(bottom_up_cut_rod(prc, 10))
-
+n = 8
+r, s = bottom_up_cut_rod(prc, n)
+while n > 0:  # PRINT-CUT-ROD-SOLUTION at a specific length.
+    print(s[n])
+    n -= s[n]
 
 """ When we think about a dynamic-programming problem, we should understand the
     set of subproblems involved and how subproblems depend on one another.
