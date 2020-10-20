@@ -85,13 +85,14 @@ def bottom_up_cut_rod(p, n):
         for i in range(1, j + 1):
             q = max(q, p[i] + r[j - i])
         r[j] = q
+        # print(r[j]) # Improve space and time complexity if printing all solutions.
 
     return r[n]
 
 
 prc = [0, 1, 5, 8, 9, 10, 17, 17, 20, 24, 30]  # Price
-for i in range(0, 11):
-    print(bottom_up_cut_rod(prc, i))
+# for i in range(0, 11):
+print(bottom_up_cut_rod(prc, 10))
 
 
 """ When we think about a dynamic-programming problem, we should understand the
