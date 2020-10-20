@@ -78,16 +78,23 @@ def memoized_cut_rod_aux(p, n, r):
 
 
 def bottom_up_cut_rod(p, n):
+    # Underscore usage in python
+    # https://bit.ly/2ThgTYV
     r = [0 for _ in range(n + 1)]
-
+    s = [0 for _ in range(n + 1)]
     for j in range(1, n + 1):
         q = p[0]
         for i in range(1, j + 1):
-            q = max(q, p[i] + r[j - i])
+            if q < p[i] + r[j - i]:
+                q = p[i] + r[j - i]
+                s[j] = i
+                ''' An extended version of BOTTOM-UP-CUT-ROD that computes, for each
+                    rod size j , not only the maximum revenue r, but also s, 
+                    the optimal size of the first piece to cut off'''
         r[j] = q
         # print(r[j]) # Improve space and time complexity if printing all solutions.
 
-    return r[n]
+    return r, s
 
 
 prc = [0, 1, 5, 8, 9, 10, 17, 17, 20, 24, 30]  # Price
