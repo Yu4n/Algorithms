@@ -94,11 +94,11 @@ for i in range(0, 11):
     print(bottom_up_cut_rod(prc, i))
 
 
-"""When we think about a dynamic-programming problem, we should understand the
+""" When we think about a dynamic-programming problem, we should understand the
     set of subproblems involved and how subproblems depend on one another.
     
     The subproblem graph for the problem embodies exactly this information. Fig-
-    ure 15.4 shows the subproblem graph for the rod-cutting problem with n D 4. It
+    ure 15.4 shows the subproblem graph for the rod-cutting problem with n = 4. It
     is a directed graph, containing one vertex for each distinct subproblem. The sub-
     problem graph has a directed edge from the vertex for subproblem x to the vertex
     for subproblem y if determining an optimal solution for subproblem x involves
@@ -121,7 +121,7 @@ for i in range(0, 11):
     view the top-down method (with memoization) for dynamic programming as a
     “depth-first search” of the subproblem graph (see Section 22.3).
     
-    The size of the subproblem graph G D .V; E/ can help us determine the running
+    The size of the subproblem graph G = (V, E) can help us determine the running
     time of the dynamic programming algorithm. Since we solve each subproblem just
     once, the running time is the sum of the times needed to solve each subproblem.
     Typically, the time to compute the solution to a subproblem is proportional to the
