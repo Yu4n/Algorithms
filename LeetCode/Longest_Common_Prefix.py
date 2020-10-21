@@ -14,7 +14,10 @@ class Solution:
     def longestCommonPrefix(self, strs):
         if not strs:
             return ""
-        shortest = min(strs, key=len)  # key=min as parameter
+        # strs = ["flower", "flow", "flight"]
+        # shortest = min(strs, key=len), in which shortest == flow as parameter is key=min.
+        strs.sort()
+        shortest = strs[0]  # shortest == flight
         for i, ch in enumerate(shortest):  # Use enumerate to index.
             for other in strs:
                 if other[i] != ch:
