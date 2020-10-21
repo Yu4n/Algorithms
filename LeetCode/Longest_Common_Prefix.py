@@ -1,12 +1,12 @@
 class Solution:
     def longestCommonPrefix(self, strs: []) -> str:  # Vertical scanning method
-        if not strs or not len(strs):  # or not and
+        if not strs:  # or, not and
             return ''
         for i in range(0, len(strs[0])):
             c = strs[0][i]
             for j in range(1, len(strs)):
                 # i == len(strs[j]) means strs[0] is longer than strs[j].
-                if i == len(strs[j]) or strs[j][i] != c:  # or not and
+                if i == len(strs[j]) or strs[j][i] != c:  # or, not and
                     return strs[0][0:i]
         return strs[0]
 
