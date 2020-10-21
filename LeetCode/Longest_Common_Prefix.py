@@ -1,17 +1,18 @@
 class Solution:
-    def longestCommonPrefix_bad(self, strs: []) -> str:  # Time Limit Exceeded
-        leng = len(strs)
-        i = 0
-        while True:
-            for j in range(0, leng - 1):
-                if i == 0 and strs[j][i] != strs[j + 1][i]:
+    def longestCommonPrefix(self, strs: []) -> str:  # Time Limit Exceeded
+        n = len(strs)
+        if n == 0:
+            return ''
+        prefix = strs[0]
+        for a in strs[1:]:  # Start from the second string in the list.
+            while a.find(prefix) != 0:  # Locate the prefix.
+                prefix = prefix[:-1]  # Slice out the last character.
+                if not prefix:
                     return ''
-            for j in range(0, leng - 1):
-                if strs[j][i] != strs[j + 1][i]:
-                    return strs[0][0:i]
-            i += 1
+        return prefix
 
-    def longestCommonPrefix(self, strs):
+
+    def longestCommonPrefix1(self, strs):
         if not strs:
             return ""
         # strs = ["flower", "flow", "flight"]
@@ -26,5 +27,5 @@ class Solution:
 
 
 x = Solution()
-strs = ["flower", "flow", "flight"]
+strs = ["dog", "racecar", "car"]
 print(x.longestCommonPrefix(strs))
