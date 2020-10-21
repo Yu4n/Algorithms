@@ -1,16 +1,13 @@
 class Solution:
-    def longestCommonPrefix(self, strs: []) -> str:  # Time Limit Exceeded
-        n = len(strs)
-        if n == 0:
+    def longestCommonPrefix(self, strs: []) -> str:  # Vertical scanning method
+        if not strs or not len(strs):  # or not and
             return ''
-        prefix = strs[0]
-        for a in strs[1:]:  # Start from the second string in the list.
-            while a.find(prefix) != 0:  # Locate the prefix.
-                prefix = prefix[:-1]  # Slice out the last character.
-                if not prefix:
-                    return ''
-        return prefix
-
+        for i in range(0, len(strs[0])):
+            c = strs[0][i]
+            for j in range(1, len(strs)):
+                if i == len(strs[j]) or strs[j][i] != c:  # or not and
+                    return strs[0][0:i]
+        return strs[0]
 
     def longestCommonPrefix1(self, strs):
         if not strs:
@@ -24,6 +21,18 @@ class Solution:
                 if other[i] != ch:
                     return shortest[:i]
         return shortest
+
+    def longestCommonPrefix2(self, strs: []) -> str:  # Horizontal scanning method
+        n = len(strs)
+        if n == 0:
+            return ''
+        prefix = strs[0]
+        for a in strs[1:]:  # Start from the second string in the list.
+            while a.find(prefix) != 0:  # Locate the prefix.
+                prefix = prefix[:-1]  # Slice out the last character.
+                if not prefix:
+                    return ''
+        return prefix
 
 
 x = Solution()
