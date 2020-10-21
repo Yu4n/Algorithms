@@ -5,6 +5,7 @@ class Solution:
         for i in range(0, len(strs[0])):
             c = strs[0][i]
             for j in range(1, len(strs)):
+                # i == len(strs[j]) means strs[0] is longer than strs[j].
                 if i == len(strs[j]) or strs[j][i] != c:  # or not and
                     return strs[0][0:i]
         return strs[0]
@@ -36,5 +37,5 @@ class Solution:
 
 
 x = Solution()
-strs = ["dog", "racecar", "car"]
+strs = ["ab", "a", 'abc']
 print(x.longestCommonPrefix(strs))
