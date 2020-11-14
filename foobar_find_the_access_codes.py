@@ -1,13 +1,12 @@
 def solution(l):
+    c = [0] * len(l)
     count = 0
-    n = len(l)
-    for i in range(n):
-        for j in range(i + 1, n):
-            for k in range(j + 1, n):
-                p = l[k] / l[j]
-                q = l[j] / l[i]
-                if (p % 1 == 0) and (q % 1 == 0):
-                    count += 1
+    for i in range(0,len(l)):
+        j=0
+        for j in range(0, i):
+            if l[i] % l[j] == 0:
+                c[i] = c[i] + 1
+                count = count + c[j]
     return count
 
 
