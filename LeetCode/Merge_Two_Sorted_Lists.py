@@ -30,7 +30,7 @@ class Solution:
             return l2
 
     # in-place, iteratively
-    def mergeTwoLists(self, l1, l2):
+    def mergeTwoLists3(self, l1, l2):
         if None in (l1, l2):
             return l1 or l2
         dummy = cur = ListNode(0)
@@ -46,6 +46,23 @@ class Solution:
                 l2 = tmp
             cur = cur.next
         cur.next = l1 or l2
+        return dummy.next
+
+    # My solution
+    def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
+        dummy = cur = ListNode(0)
+        while l1 and l2:
+            if l1.val <= l2.val:
+                cur.next = l1
+                l1 = l1.next
+            else:
+                cur.next = l2
+                l2 = l2.next
+            cur = cur.next
+        if l1 is None:
+            cur.next = l2
+        elif l2 is None:
+            cur.next = l1
         return dummy.next
 
 
