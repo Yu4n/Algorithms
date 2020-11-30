@@ -10,6 +10,12 @@ class Solution:
                 res.append(i + 1)
         return res
 
+    def findDisappearedNumbers1(self, nums):
+        if not nums:
+            return []
+        # Set operation
+        return list(set(range(1, len(nums) + 1)) - set(nums))
+
 
 x = Solution()
 ls = [6, 7, 7, 5, 6, 1, 2]
