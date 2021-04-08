@@ -1,4 +1,4 @@
-import definition
+from definition import ListNode, TreeNode
 
 
 class Solution(object):
@@ -12,7 +12,7 @@ class Solution(object):
         return self.merge(l, r)
 
     def merge(self, l, r):
-        dummy = p = definition.ListNode()
+        dummy = p = ListNode()
         while l and r:
             if l.val < r.val:
                 p.next = l
