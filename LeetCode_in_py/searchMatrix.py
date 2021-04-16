@@ -1,9 +1,13 @@
 class Solution:
     def searchMatrix(self, matrix, target):
-        for i in range(len(matrix)):
-            for x in matrix[i]:
-                if x == target:
-                    return True
-                elif x > target:
-                    break
-        return False
+        n = len(matrix)
+        m = len(matrix[0])
+        l = 0
+        r = m * n - 1
+        while l != r:
+            mid = (l + r - 1) >> 2
+            if matrix[mid // m][mid % m] < target:
+                l = mid + 1
+            else:
+                r = mid
+        return matrix[r // m][r % m] == target
