@@ -5,7 +5,7 @@ class Solution:
         l = 0
         r = m * n - 1
         while l != r:
-            mid = (l + r - 1) >> 2
+            mid = (l + r) // 2
             if matrix[mid // m][mid % m] < target:
                 l = mid + 1
             else:
