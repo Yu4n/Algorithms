@@ -19,7 +19,8 @@ class Solution:
         candidates.sort()
 
         def backtrack(start, combination, cusum):
-            if cusum > 500: return
+            if cusum > 500:
+                return
             if cusum == target:
                 ans.append(combination[:])
                 return
