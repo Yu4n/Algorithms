@@ -1,6 +1,6 @@
 from definition import TreeNode
 
-
+# https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/discuss/34579/Python-short-recursive-solution.
 class Solution:
     def buildTree(self, preorder, inorder):
         if inorder:
