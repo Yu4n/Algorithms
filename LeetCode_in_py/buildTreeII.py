@@ -3,7 +3,7 @@ from definition import TreeNode
 
 # https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/discuss/221681/Don't-use-top-voted-Python-solution-for-interview-here-is-why
 class Solution:
-    def buildTree(self, inorder, postorder):
+    def buildTree_(self, inorder, postorder):
         if not inorder:
             return None
 
@@ -15,18 +15,18 @@ class Solution:
 
         return root
 
-    def buildTree_(self, inorder, postorder):
-        map_inorder = {}
-        for i, val in enumerate(inorder):
-            map_inorder[val] = i
+    def buildTree(self, inorder, postorder) -> TreeNode:
+        def recur(root, left, right):
+            if left > right:
+                return  # 递归终止
+            node = TreeNode(postorder[root])  # 建立根节点
+            i = dic[postorder[root]]  # 划分根节点、左子树、右子树
+            print("left: " + str(left) + ". right: " + str(right))
+            node.right = recur(root - 1, i + 1, right)  # 开启右子树递归
+            node.left = recur(root - 1 - right + i, left, i - 1)  # 开启左子树递归
+            return node  # 回溯返回根节点
 
-        def recur(low, high):
-            if low > high:
-                return None
-            x = TreeNode(postorder.pop())
-            mid = map_inorder[x.val]
-            x.right = recur(mid + 1, high)
-            x.left = recur(low, mid - 1)
-            return x
-
-        return recur(0, len(inorder) - 1)
+        dic, postorder = {}, postorder
+        for i in range(len(inorder)):
+            dic[inorder[i]] = i
+        return recur(len(inorder) - 1, 0, len(inorder) - 1)
