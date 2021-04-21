@@ -33,3 +33,14 @@ class Solution:
 
         backtrack(0, [], 0)
         return ans
+
+    def combinationSumDP(self, candidates, target):
+        dp = {i: [] for i in range(target + 1)}
+        # 这里一定要将candidates降序排列
+        for i in sorted(candidates, reverse=True):
+            for j in range(i, target + 1):
+                if j == i:
+                    dp[j] = [[i]]
+                else:
+                    dp[j].extend([x + [i] for x in dp[j - i]])
+        return dp[target]
