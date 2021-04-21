@@ -3,7 +3,7 @@ from definition import TreeNode
 
 # https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/discuss/34579/Python-short-recursive-solution.
 class Solution:
-    def buildTree(self, preorder, inorder):
+    def buildTree_(self, preorder, inorder):
         if inorder:
             ind = inorder.index(preorder.pop(0))
             root = TreeNode(inorder[ind])
@@ -11,7 +11,7 @@ class Solution:
             root.right = self.buildTree(preorder, inorder[ind + 1:])
             return root
 
-    def buildTree_(self, preorder, inorder) -> TreeNode:
+    def buildTree(self, preorder, inorder) -> TreeNode:
         def recur(root, left, right):
             if left > right:
                 return  # 递归终止
@@ -21,7 +21,7 @@ class Solution:
             node.right = recur(i - left + root + 1, i + 1, right)  # 开启右子树递归
             return node  # 回溯返回根节点
 
-        dic, preorder = {}, preorder
+        dic = {}
         for i in range(len(inorder)):
             dic[inorder[i]] = i
         return recur(0, 0, len(inorder) - 1)
