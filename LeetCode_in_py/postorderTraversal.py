@@ -13,3 +13,18 @@ class Solution:
                     stack.append((node.right, False))
                     stack.append((node.left, False))
         return traversal
+
+    # https://leetcode-cn.com/problems/cong-shang-dao-xia-da-yin-er-cha-shu-lcof/
+    def verifyPostorder(self, postorder: [int]) -> bool:
+        def recur(i, j):
+            if i >= j:
+                return True
+            p = i
+            while postorder[p] < postorder[j]:
+                p += 1
+            m = p
+            while postorder[p] > postorder[j]:
+                p += 1
+            return p == j and recur(i, m - 1) and recur(m, j - 1)
+
+        return recur(0, len(postorder) - 1)
