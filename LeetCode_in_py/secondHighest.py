@@ -1,18 +1,11 @@
 class Solution:
     def secondHighest(self, s: str) -> int:
-        highest = None
-        for char in s:
-            if ord(char) <= 57:
-                if not highest:
-                    highest = char
-                elif char > highest:
-                    highest = char
-        second = None
-        for char in s:
-            if ord(char) <= 57:
-                if second and highest > char > second:
-                    second = char
-                elif not second:
-                    if char < highest:
-                        second = char
-        return second if second else -1
+        first = sec = -1
+        for c in s:
+            if c.isdigit():
+                d = ord(c) - ord('0')
+                if first < d:
+                    sec, first = first, d
+                elif sec < d < first:
+                    sec = d
+        return sec
