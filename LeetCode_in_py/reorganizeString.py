@@ -10,10 +10,10 @@ class Solution:
             return ""
         res = [""] * n
         i = 0
-        for x, fx in freq:
-            for _ in range(fx):
+        for x, fx in freq:  # iterate the sorted dictionary
+            for _ in range(fx):  # loop fx times
                 if i >= n:
-                    i = 1
+                    i = 1  # go back to index 1
                 res[i] = x
                 i += 2
         return "".join(res)
@@ -44,7 +44,3 @@ class Solution:
                 count -= 1
                 even += 2
         return "".join(res)
-
-
-sln = Solution()
-print(sln.reorganizeString("abbbaa"))
