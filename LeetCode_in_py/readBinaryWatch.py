@@ -1,15 +1,26 @@
 class Solution:
-    def readBinaryWatch(self, turnedOn: int) -> [str]:
-        def countBit(num):
-            cnt = 0
-            while num != 0:
-                num = num & (num - 1)
-                cnt += 1
-            return cnt
+    _LED_NUM = 10
+    _HOUR_LED_NUM = 4
 
-        res = []
-        for i in range(12):
-            for j in range(60):
-                if countBit(i) + countBit(j) == turnedOn:
-                    res.append(str(i) + ':' + str(j).zfill(2))
-        return res
+    # Backtracking
+    def __init__(self):
+        self._times = []
+
+    def readBinaryWatch(self, num: int):
+        self._backtrack(num, 0, 0, 0)
+        return self._times
+
+    def _backtrack(self, num: int, pos: int, hour: int, minute: int):
+        if hour > 11 or minute > 59:
+            return
+        elif num == 0:
+            self._times.append("{:d}:{:02d}".format(hour, minute))
+            return
+
+        for i in range(pos, Solution._LED_NUM):
+            if i < Solution._HOUR_LED_NUM:
+                self._backtrack(num - 1, i + 1,
+                                hour + 2 ** i, minute)
+            else:
+                self._backtrack(num - 1, i + 1,
+                                hour, minute + 2 ** (i - Solution._HOUR_LED_NUM))
