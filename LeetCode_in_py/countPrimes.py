@@ -1,21 +1,17 @@
+from math import sqrt
+
+
 class Solution:
-    def countPrimes(self, n: int) -> int:
-        if n <= 2:
+    def countPrimes(self, n):
+        if n < 3:
             return 0
-        is_primes = [True] * n
-        non_primes = 0
-        for i in range(2, int(n ** 0.5 + 1)):
-            if is_primes[i]:
-                for j in range(i * i, n, i):
-                    if is_primes[j]:
-                        is_primes[j] = False
-                        print("j: " + str(j))
-                        non_primes += 1
-        print(is_primes)
-        print(len(is_primes[2:-1]))
-        print("non_primes is: " + str(non_primes))
-        return n - 2 - non_primes
+        primes = [True] * n
+        primes[0] = primes[1] = False
+        for i in range(2, int(n ** 0.5) + 1):
+            if primes[i]:
+                primes[i * i: n: i] = [False] * len(primes[i * i: n: i])
+        return sum(primes)
 
 
 sln = Solution()
-print(sln.countPrimes(13))
+print(sln.countPrimes(4))
