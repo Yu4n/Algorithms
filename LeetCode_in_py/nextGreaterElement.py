@@ -1,21 +1,24 @@
+from collections import deque
+
+
 class Solution:
     def nextGreaterElement(self, nums1: [int], nums2: [int]) -> [int]:
-        dct = {}
-        res = []
-        n = len(nums2)
-        for num in nums1:
-            dct[num] = nums2.index(num)
-        for key in dct.keys():
-            if dct[key] + 1 == n:
-                res.append(-1)
-                continue
-            for i in range(dct[key] + 1, n):
-                if nums2[i] > key:
-                    res.append(nums2[i])
-                    break
-                if i == n - 1 and nums2[i] <= key:
-                    res.append(-1)
-                    break
+        # 先遍历大数组nums2，首先将第一个元素入栈；
+        # 继续遍历，当当前元素小于栈顶元素时，继续将它入栈；当当前元素大于栈顶元素时，栈顶元素出栈，此时应将该出栈的元素与当前元素形成key - value键值对，存入HashMap中；
+        # 当遍历完nums2后，得到nums2中元素所对应的下一个更大元素的hash表；
+        # 遍历nums1的元素在hashMap中去查找‘下一个更大元素’，当找不到时则为 - 1。
+        hmap = {}
+        stack = deque()
+
+        for i in range(len(nums2)):
+            while stack and stack[-1] < nums2[i]:
+                hmap[stack.pop()] = nums2[i]
+            stack.append(nums2[i])
+
+        res = [-1] * len(nums1)
+        for i in range(len(nums1)):
+            if nums1[i] in hmap:
+                res[i] = hmap[nums1[i]]
         return res
 
 
